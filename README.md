@@ -1,31 +1,34 @@
 ## Projeto lista de contatos com Flutter
 **Instrutor: Gabriel Rodrigo Desbesell**
 
-Projeto desenvolvido com os alunos do curso de programação para internet:
+Projeto desenvolvido com os alunos do curso de programação para internet do SENAC SC:
 
 - [x] Apresentação das tecnologias envolvidas e criação das demandas iniciais com estrutura MVC;
-- [ ] Atualizar o formulário de cdastros    
+- Atualizar o formulário de cadastro:    
     - [ ] Adicionar validação do formulário;
     - [ ] Adicionar uma foto ao contato;
     - [ ] Adicionar latitude e longitude ao contato;
     - [ ] Adicionar um link de página web ao contato;
     - [ ] Adicionar um email ao contato;
     - [ ] Adicionar um telefone ao contato;
-- [ ] Atualizar a lista de contatos;
+    - [ ] Ao entrar na tela o primeiro campo deve receber o foco;
+    - [ ] Cada campo deve permitir inserção de dados apenas do seu tipo;
+- Atualizar a lista de contatos:
     - [ ] Exibir a foto na listagem;
     - [ ] Remover o botão excluir da Lista;
-    - [ ] Adicionar menu inferior ao clicar no contato;
-        - [ ] Cada campo deve permitir inserção de dados apenas do seu tipo;        
+    - [ ] Adicionar menu inferior ao clicar no contato;               
         - [ ] Utilizar ícones do FontAwesome;
         - [ ] Adicionar opção de alteração do contato;
-        - [ ] Permitir abrir o link da do contato no navegador de internet(se cadastrado);
+        - [ ] Permitir abrir o link(se cadastrado) da do contato no navegador de internet;
         - [ ] Abrir um QR Code de compartilhamento do contato;
         - [ ] Abrir compartilhar o contato por WhatsApp;
         - [ ] Abrir o telefone no discador;
         - [ ] Abrir o e-mail em um aplicativo de e-mail para escrever uma nova mensagem;
         - [ ] Permitir excluir o contato;
             - [ ] Adicionar confirmação de exclusão;
-- [ ] Adicionar opção no AppBar de leitura de QRCode e importação do contato para a base de dados;
+        - [ ] Adicionar opção de visualização completa do contato:
+            - [ ] Exibir todos os dados, foto e QRCode do tipo VCard;
+- [ ] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
 - [ ] Adicionar pelo menos dois idiomas ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
 - [ ] Exibir a versão atual do APP na Splash Screen;
