@@ -1,7 +1,7 @@
-## Lista de contatos com Flutter em base de dados local
-**Instrutores:**
-Gabriel Rodrigo Desbesell 
-Rafael Chieli
+### Lista de contatos com Flutter em base de dados local
+**Instrutores:**<br />
+Gabriel Rodrigo Desbesell <br />
+Rafael Chieli<br /><br />
 
 Projeto desenvolvido com os alunos do curso de programação para internet do SENAC SC:
 
