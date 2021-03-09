@@ -17,31 +17,44 @@ class HomePage extends StatelessWidget {
             Get.to(AddPage());
           },
           child: Icon(Icons.add)),
-      body: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(16),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Expanded(
               //cria um ListView observável pelo Get
               //Obx() é o responsável por atualizar o listView
               //toda vez que ouver uma mudança nas variáveis observáveis
               //no caso:  var ContactModel = List<ContactModel>().obs;
-              child: Obx(() => ListView.builder(
-                    itemCount: _contactController.contactModel.length,
-                    itemBuilder: (context, index) => ListTile(
-                      leading: Column(
-                        children: [
-                          Text(_contactController.contactModel[index].nome),
-                          Text(_contactController.contactModel[index].descricao)
-                        ],
+              child: Obx(() => _contactController.contactModel.length < 1
+                  ? Text('Nenhum contato adicionado em sua lista!')
+                  : ListView.builder(
+                      itemCount: _contactController.contactModel.length,
+                      itemBuilder: (context, index) => Card(
+                        child: ListTile(
+                          leading: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(_contactController.contactModel[index].nome),
+                              Text(
+                                _contactController
+                                    .contactModel[index].descricao,
+                                style: TextStyle(fontSize: 10.0),
+                              ),
+                            ],
+                          ),
+                          trailing: IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                              onPressed: () => _contactController.deleteContact(
+                                  _contactController.contactModel[index].id)),
+                        ),
                       ),
-                      trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () => _contactController.deleteContact(
-                              _contactController.contactModel[index].id)),
-                    ),
-                  )),
+                    )),
             ),
           ],
         ),
