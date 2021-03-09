@@ -1,4 +1,4 @@
-import 'package:contactlist/model/contact_data.dart';
+import 'package:contactlist/model/contact_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -27,6 +27,7 @@ class DatabaseHelper {
   }
 
   //abre o banco de dados no diretório de instalação do aplicativo
+  //se não existir ele cria um novo arquivo.
   _initDatabase() async {
     String path = join(await getDatabasesPath(), _databaseName);
     return await openDatabase(path,
@@ -45,11 +46,11 @@ class DatabaseHelper {
   }
 
   //grava um registro na tabela
-  Future<int> insert(ContactData contact) async {
+  Future<int> insert(ContactModel contact) async {
     //aguarda a instância do banco ser acessível.
     Database db = await instance.database;
     //insere os dados no banco de dados conforme o mapa de campos da
-    //classe/model ContactData
+    //classe/model ContactModel
     var res = await db.insert(table, contact.toMap());
     return res;
   }

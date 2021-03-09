@@ -26,20 +26,20 @@ class HomePage extends StatelessWidget {
               //cria um ListView observável pelo Get
               //Obx() é o responsável por atualizar o listView
               //toda vez que ouver uma mudança nas variáveis observáveis
-              //no caso:  var ContactData = List<ContactData>().obs;
+              //no caso:  var ContactModel = List<ContactModel>().obs;
               child: Obx(() => ListView.builder(
-                    itemCount: _contactController.contactData.length,
+                    itemCount: _contactController.contactModel.length,
                     itemBuilder: (context, index) => ListTile(
                       leading: Column(
                         children: [
-                          Text(_contactController.contactData[index].nome),
-                          Text(_contactController.contactData[index].descricao)
+                          Text(_contactController.contactModel[index].nome),
+                          Text(_contactController.contactModel[index].descricao)
                         ],
                       ),
                       trailing: IconButton(
                           icon: Icon(Icons.delete),
                           onPressed: () => _contactController.deleteContact(
-                              _contactController.contactData[index].id)),
+                              _contactController.contactModel[index].id)),
                     ),
                   )),
             ),

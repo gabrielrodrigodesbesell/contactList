@@ -35,29 +35,17 @@ Projeto desenvolvido com os alunos do curso de programação para internet:
 
 **Pacotes utilizados no projeto:**
 https://pub.dev/packages/get
-
 https://pub.dev/packages/sqflite
-
 https://pub.dev/packages/image_picker
-
 https://pub.dev/packages/url_launcher
-
 https://pub.dev/packages/modal_bottom_sheet
-
 https://pub.dev/packages/location or https://pub.dev/packages/geolocator
-
 https://pub.dev/packages/qrcode_reader
-
 https://pub.dev/packages/barcode_generator
-
 https://pub.dev/packages/font_awesome_flutter
-
 https://pub.dev/packages/splashscreen
-
 https://pub.dev/packages/package_info
-
 https://pub.dev/packages/social_share
 
 **Créditos ao projeto original:**
-
 https://github.com/aadarshchhetry/sqlTodoApp
