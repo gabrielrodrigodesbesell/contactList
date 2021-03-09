@@ -1,5 +1,7 @@
 ## Projeto lista de contatos com Flutter
-**Instrutor: Gabriel Rodrigo Desbesell**
+**Instrutores:**
+ Gabriel Rodrigo Desbesell
+ Rafael Chieli
 
 Projeto desenvolvido com os alunos do curso de programação para internet do SENAC SC:
 
