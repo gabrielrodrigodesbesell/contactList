@@ -31,6 +31,9 @@ Projeto desenvolvido com os alunos do curso de programação para internet:
 - [ ] Exibir a versão atual do APP na Splash Screen;
 - [ ] Atualizar o ícone do aplicativo;
 - [ ] Modificar o título do aplicativo;
+
+**Corrigir bugs**
+- [ ] Ao adicionar um contato e apagar ele na sequência não é removido da base de dados, apenas da tela;
   
 
 **Pacotes utilizados no projeto:**
