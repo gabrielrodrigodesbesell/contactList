@@ -11,7 +11,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
     - [ ] Adicionar uma foto ao contato;
     - [ ] Adicionar latitude e longitude ao contato;
     - [ ] Adicionar um link de página web ao contato;
-    - [ ] Adicionar um email ao contato;
+    - [x] Adicionar um email ao contato;
     - [ ] Adicionar um telefone ao contato;
     - [ ] Ao entrar na tela o primeiro campo deve receber o foco;
     - [ ] Cada campo deve permitir inserção de dados apenas do seu tipo;
