@@ -11,6 +11,8 @@ class ContactController extends GetxController {
   //declaração dos controladores de textos do formulário
   TextEditingController nomeContactController = TextEditingController();
   TextEditingController descricaoContactController = TextEditingController();
+  TextEditingController emailContactController = TextEditingController();
+  GlobalKey<FormState> form = GlobalKey<FormState>();
 
   @override
   void onInit() {
@@ -34,23 +36,26 @@ class ContactController extends GetxController {
   }
 
   void addData() async {
-    //grava na base de dados
-    var lastId = await DatabaseHelper.instance.insert(ContactModel(
-        nome: nomeContactController.text,
-        descricao: descricaoContactController.text));
-    //insere os dados na lista atual que é exibida em tela
-    //evitando o reload da tabela
-    contactModel.insert(
-        0,
-        ContactModel(
-            id: lastId,
-            nome: nomeContactController.text,
-            descricao: descricaoContactController.text));
-    //limpa os campos do formulário
-    nomeContactController.clear();
-    descricaoContactController.clear();
-    //fecha o formulário de cadastro
-    Get.back();
+    if (form.currentState.validate()) {
+      //grava na base de dados
+      var lastId = await DatabaseHelper.instance.insert(ContactModel(
+          nome: nomeContactController.text,
+          descricao: descricaoContactController.text));
+      //insere os dados na lista atual que é exibida em tela
+      //evitando o reload da tabela
+      contactModel.insert(
+          0,
+          ContactModel(
+              id: lastId,
+              nome: nomeContactController.text,
+              descricao: descricaoContactController.text));
+      //limpa os campos do formulário
+      nomeContactController.clear();
+      descricaoContactController.clear();
+      emailContactController.clear();
+      //fecha o formulário de cadastro
+      Get.back();
+    }
   }
 
   void deleteContact(int id) async {

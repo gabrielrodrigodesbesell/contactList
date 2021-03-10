@@ -17,20 +17,46 @@ class AddPage extends StatelessWidget {
             _contactController.addData();
           },
           child: Icon(Icons.save)),
-      body: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              controller: _contactController.nomeContactController,
-              decoration: InputDecoration(hintText: "Digite o nome"),
-            ),
-            TextFormField(
-              controller: _contactController.descricaoContactController,
-              decoration: InputDecoration(hintText: "Digite a descrição"),
-            )
-          ],
+      body: Form(
+        key: _contactController.form,
+        child: Container(
+          alignment: Alignment.topLeft,
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: _contactController.nomeContactController,
+                decoration: InputDecoration(hintText: "Digite o nome"),
+                autofocus: true,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Campo obrigatório";
+                  }
+                },
+              ),
+              TextFormField(
+                controller: _contactController.descricaoContactController,
+                decoration: InputDecoration(hintText: "Digite a descrição"),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Campo obrigatório";
+                  }
+                },
+              ),
+              TextFormField(
+                controller: _contactController.emailContactController,
+                decoration: InputDecoration(hintText: "Digite o email"),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value.isNotEmpty) {
+                    return (!GetUtils.isEmail(value))
+                        ? "Email is not valid"
+                        : null;
+                  }
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
