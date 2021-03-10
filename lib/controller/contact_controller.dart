@@ -35,7 +35,7 @@ class ContactController extends GetxController {
 
   void addData() async {
     //grava na base de dados
-    await DatabaseHelper.instance.insert(ContactModel(
+    var lastId = await DatabaseHelper.instance.insert(ContactModel(
         nome: nomeContactController.text,
         descricao: descricaoContactController.text));
     //insere os dados na lista atual que é exibida em tela
@@ -43,7 +43,7 @@ class ContactController extends GetxController {
     contactModel.insert(
         0,
         ContactModel(
-            id: contactModel.length,
+            id: lastId,
             nome: nomeContactController.text,
             descricao: descricaoContactController.text));
     //limpa os campos do formulário
