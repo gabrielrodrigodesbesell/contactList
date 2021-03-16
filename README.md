@@ -16,7 +16,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
     - [ ] Ao entrar na tela o primeiro campo deve receber o foco;
     - [ ] Cada campo deve permitir inserção de dados apenas do seu tipo;
 - Atualizar a lista de contatos:
-    - [ ] Exibir a foto na listagem;
+    - [ ] Exibir a foto na listagem(leading,title,subtitle);
     - [ ] Remover o botão excluir da Lista;
     - [ ] Adicionar menu inferior ao clicar no contato;               
         - [ ] Utilizar ícones do FontAwesome;
@@ -28,8 +28,10 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
         - [ ] Abrir o e-mail em um aplicativo de e-mail para escrever uma nova mensagem;
         - [ ] Permitir excluir o contato;
             - [ ] Adicionar confirmação de exclusão;
+            - [ ] Remover a foto do dispositivo;
         - [ ] Adicionar opção de visualização completa do contato:
             - [ ] Exibir todos os dados, foto e QRCode do tipo VCard;
+        - [ ] Exibir opção de ver no mapa a localização do contato(se disponível);
 - [ ] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
 - [ ] Adicionar pelo menos dois idiomas ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
