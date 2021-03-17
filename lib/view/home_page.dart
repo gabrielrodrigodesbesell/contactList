@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:contactlist/controller/contact_controller.dart';
 import 'package:contactlist/view/add_page.dart';
 import 'package:flutter/material.dart';
@@ -33,17 +35,18 @@ class HomePage extends StatelessWidget {
                       itemCount: _contactController.contactModel.length,
                       itemBuilder: (context, index) => Card(
                         child: ListTile(
-                          leading: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                          leading: Expanded(
+                              flex: 1,
+                              child:
+                                  _contactController.contactModel[index].foto !=
+                                          null
+                                      ? Image.file(File(_contactController
+                                          .contactModel[index].foto))
+                                      : Container()),
+                          title:
                               Text(_contactController.contactModel[index].nome),
-                              Text(
-                                _contactController
-                                    .contactModel[index].descricao,
-                                style: TextStyle(fontSize: 10.0),
-                              ),
-                            ],
+                          subtitle: Text(
+                            _contactController.contactModel[index].descricao,
                           ),
                           trailing: IconButton(
                               icon: Icon(
@@ -51,7 +54,8 @@ class HomePage extends StatelessWidget {
                                 color: Colors.red,
                               ),
                               onPressed: () => _contactController.deleteContact(
-                                  _contactController.contactModel[index].id)),
+                                  _contactController.contactModel[index].id,
+                                  _contactController.contactModel[index].foto)),
                         ),
                       ),
                     )),
