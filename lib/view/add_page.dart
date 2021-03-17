@@ -10,10 +10,11 @@ class AddPage extends StatelessWidget {
   final ContactController _contactController = Get.put(ContactController());
   @override
   Widget build(BuildContext context) {
+    //limpa a variável imagem, caso o usuário tenha tirado uma foto e voltado para a lista sem salvar, ao retornar na tela de cadastro a imagem deve ser vazia
     _contactController.image.value = '';
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: new AppBar(title: Text("Adicionar contato")),
+      appBar: new AppBar(title: Text("Add contact to list")),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             //acessa o controlador ContactController e executa a função
@@ -31,28 +32,29 @@ class AddPage extends StatelessWidget {
               children: <Widget>[
                 TextFormField(
                   controller: _contactController.nomeContactController,
-                  decoration: InputDecoration(hintText: "Digite o nome"),
+                  decoration: InputDecoration(hintText: "Enter your name"),
                   autofocus: true,
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Campo obrigatório";
+                      return "Required field";
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   controller: _contactController.descricaoContactController,
-                  decoration: InputDecoration(hintText: "Digite a descrição"),
+                  decoration: InputDecoration(
+                      hintText: "Enter your personal description"),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Campo obrigatório";
+                      return "Required field";
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   controller: _contactController.emailContactController,
-                  decoration: InputDecoration(hintText: "Digite o email"),
+                  decoration: InputDecoration(hintText: "Enter your e-mail"),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value.isNotEmpty) {
@@ -65,9 +67,11 @@ class AddPage extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: _contactController.siteContactController,
-                  decoration: InputDecoration(hintText: "Digite o link"),
+                  decoration:
+                      InputDecoration(hintText: "Enter your internet link"),
                   keyboardType: TextInputType.url,
-                  textInputAction: TextInputAction.done,
+                  //ao clicar no Enter do teclado, vai para o próximo campo
+                  textInputAction: TextInputAction.next,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value.isNotEmpty) {
@@ -80,8 +84,10 @@ class AddPage extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: _contactController.telefoneContactController,
-                  decoration: InputDecoration(hintText: "Digite o telefone"),
+                  decoration:
+                      InputDecoration(hintText: "Enter your cell phone"),
                   keyboardType: TextInputType.phone,
+                  //ao clicar no Enter do teclado, fecha o teclado.
                   textInputAction: TextInputAction.done,
                   validator: (value) {
                     if (value.isNotEmpty) {
@@ -93,7 +99,9 @@ class AddPage extends StatelessWidget {
                   },
                 ),
                 Obx(
-                  () => _contactController.image.value != ""
+                  //cria o observável do Getx para exibir a imagem tirada na câmera na tela.(atualiza automaticamente baseado nas variáveis .obs)
+                  () => _contactController.image.value !=
+                          "" //se existir um caminho de imagem, exibe a imagem na tela
                       ? Column(
                           children: [
                             TextButton(
@@ -101,17 +109,22 @@ class AddPage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.image),
-                                  Text('Alterar foto')
+                                  Text('Update a picture')
                                 ],
                               ),
                             ),
+                            //exibe a imagem na tela a partir da contrução de um arquivo baseando-se no caminho dele
                             Image.file(File(_contactController.image.value))
                           ],
                         )
                       : TextButton(
+                          //aciona a função de abertura da câmera
                           onPressed: () => _contactController.getImage(),
                           child: Row(
-                            children: [Icon(Icons.image), Text('Tirar foto')],
+                            children: [
+                              Icon(Icons.image),
+                              Text('Take a picture')
+                            ],
                           ),
                         ),
                 ),

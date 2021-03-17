@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                         child: ListTile(
                           leading: Expanded(
                               flex: 1,
-                              child:
+                              child: //exibe a imagem, se existir
                                   _contactController.contactModel[index].foto !=
                                           null
                                       ? Image.file(File(_contactController
@@ -55,7 +55,8 @@ class HomePage extends StatelessWidget {
                               ),
                               onPressed: () => _contactController.deleteContact(
                                   _contactController.contactModel[index].id,
-                                  _contactController.contactModel[index].foto)),
+                                  _contactController.contactModel[index]
+                                      .foto)), //passando os dois parâmetros para a função de exclusão
                         ),
                       ),
                     )),

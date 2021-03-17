@@ -22,15 +22,19 @@ class ContactController extends GetxController {
 
   GlobalKey<FormState> form = GlobalKey<FormState>();
 
-  var image = ''.obs;
-  final picker = ImagePicker();
+  var image = ''
+      .obs; //criado uma variável observável para armazenar o caminho da foto no celular e notificar a view para apresentar em tela
+  final picker = ImagePicker(); //instancia o plugin de captura de imagem
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile =
+        await picker.getImage(source: ImageSource.camera); //abre a câmera
     if (pickedFile != null) {
-      image.value = pickedFile.path;
+      image.value = pickedFile
+          .path; //se o usuário tirou a foto e confirmou, armazena o caminho da foto na variável imagem
     } else {
-      Get.snackbar('Aviso', 'Imagem não selecionada');
+      Get.snackbar('Aviso',
+          'Imagem não selecionada'); //se não confirmou a imagem, exibe um snackbar
     }
   }
 
@@ -47,10 +51,14 @@ class ContactController extends GetxController {
       //percorre os registros inserindo na lista atual que é
       //exibida para o usuário
       value.forEach((element) {
-        contactModel.add(ContactModel(
+        contactModel.add(
+          ContactModel(
             id: element['id'],
             nome: element['nome'],
-            descricao: element['descricao']));
+            descricao: element['descricao'],
+            foto: element['foto'],
+          ),
+        );
       });
     });
   }
@@ -90,24 +98,29 @@ class ContactController extends GetxController {
     }
   }
 
+  //recebe como parâmetro o id do registro no db e o caminho da foto, assim não precisa buscar o registro para resgatar o caminho da foto:
   void deleteContact(int id, String foto) {
+    //adiciona a confirmação no ato de exclsuão
     Get.defaultDialog(
       radius: 10,
-      barrierDismissible: false,
+      barrierDismissible:
+          false, //somente deixa fechar o pop-pup clicando nos botões de ação
       textConfirm: "Apagar",
       textCancel: "Cancelar",
       title: 'Confirma?',
       content: Text('Deseja realmente apagar'),
       onConfirm: () async {
+        //adiciona automaticamente o botão OK
         //apaga do banco de dados o registro
         await DatabaseHelper.instance.delete(id);
         //remove os dados na lista atual que é exibida em tela
         //evitando o reload da tabela
         contactModel.removeWhere((element) => element.id == id);
-        await File(foto).delete();
-        Get.back();
+        await File(foto).delete(); //deleta o arquivo recebido por parâmetro
+        Get.back(); //fecha o pop-up
       },
-      onCancel: () => Get.back(),
+      onCancel: () => Get
+          .back(), //adiciona automaticamente o botão Cancelar, e ao clicar fecha o pop-up
     );
   }
 }
