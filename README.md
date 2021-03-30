@@ -9,30 +9,29 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
 - Atualizar o formulário de cadastro:    
     - [x] Adicionar validação do formulário;
     - [x] Adicionar uma foto ao contato;
-    - [ ] Adicionar latitude e longitude ao contato;
+    - [x] Adicionar latitude e longitude ao contato;
     - [x] Adicionar um link de página web ao contato;
     - [x] Adicionar um email ao contato;
     - [x] Adicionar um telefone ao contato;
     - [x] Ao entrar na tela o primeiro campo deve receber o foco;
     - [x] Cada campo deve permitir inserção de dados apenas do seu tipo;
-    - [ ] Obrigar o usuário a tirar uma foto;
+    - [x] Obrigar o usuário a tirar uma foto;
 - Atualizar a lista de contatos:
     - [x] Exibir a foto na listagem(leading,title,subtitle);
-    - [ ] Remover o botão excluir da Lista;
-    - [ ] Adicionar menu inferior ao clicar no contato;               
-        - [ ] Utilizar ícones do FontAwesome;
+    - [x] Remover o botão excluir da Lista;
+    - [x] Adicionar menu inferior ao clicar no contato;               
+        - [x] Utilizar ícones do FontAwesome;
         - [ ] Adicionar opção de alteração do contato;
-        - [ ] Permitir abrir o link(se cadastrado) da do contato no navegador de internet;
-        - [ ] Abrir um QR Code de compartilhamento do contato;
-        - [ ] Abrir compartilhar o contato por WhatsApp;
-        - [ ] Abrir o telefone no discador;
-        - [ ] Abrir o e-mail em um aplicativo de e-mail para escrever uma nova mensagem;
-        - [ ] Permitir excluir o contato;
+        - [x] Permitir abrir o link(se cadastrado) do contato no navegador de internet;
+        - [x] Abrir compartilhar o contato por WhatsApp;
+        - [x] Abrir o telefone no discador;
+        - [x] Abrir o e-mail em um aplicativo de e-mail para escrever uma nova mensagem;
+        - [x] Permitir excluir o contato;
             - [x] Adicionar confirmação de exclusão;
             - [x] Remover a foto do dispositivo;
         - [ ] Adicionar opção de visualização completa do contato:
             - [ ] Exibir todos os dados, foto e QRCode do tipo VCard;
-        - [ ] Exibir opção de ver no mapa a localização do contato(se disponível);
+        - [x] Exibir opção de ver no mapa a localização do contato(se disponível);
 - [ ] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
 - [ ] Adicionar pelo menos dois idiomas ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
