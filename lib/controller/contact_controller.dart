@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:contactlist/view/read_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:contactlist/database/database_fetch.dart';
@@ -11,6 +12,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:simple_vcard_parser/simple_vcard_parser.dart';
+import 'package:contactlist/utils/vcard/vcard.dart';
 
 class ContactController extends GetxController {
   //ContactModel é uma lista observável, quando sofrer atualizações
@@ -52,11 +54,11 @@ class ContactController extends GetxController {
   @override
   void onInit() {
     //ao executar o controlador, busca os dados na base de dados
-    _getData();
+    getList();
     super.onInit();
   }
 
-  void _getData() {
+  void getList() {
     //busca os registros na base de dados ao abrir o app
     DatabaseHelper.instance.queryAllRows().then((value) {
       //percorre os registros inserindo na lista atual que é
@@ -98,16 +100,18 @@ class ContactController extends GetxController {
   }
 
   void saveData() async {
-    var lastId = await DatabaseHelper.instance.insert(ContactModel(
-      nome: nomeContactController.text,
-      descricao: descricaoContactController.text,
-      site: siteContactController.text,
-      telefone: telefoneContactController.text,
-      email: emailContactController.text,
-      foto: image.value,
-      latitude: latitudeContactController.text,
-      longitude: longitudeContactController.text,
-    ));
+    var lastId = await DatabaseHelper.instance.insert(
+      ContactModel(
+        nome: nomeContactController.text,
+        descricao: descricaoContactController.text,
+        site: siteContactController.text,
+        telefone: telefoneContactController.text,
+        email: emailContactController.text,
+        foto: image.value,
+        latitude: latitudeContactController.text,
+        longitude: longitudeContactController.text,
+      ),
+    );
     //insere os dados na lista atual que é exibida em tela
     //evitando o reload da tabela
     contactModel.insert(
@@ -183,5 +187,22 @@ class ContactController extends GetxController {
     longitudeContactController.text = '';
 
     saveData();
+  }
+
+  String toPersonalVCard(ContactModel fullContact) {
+    ///Create a new vCard
+    var vCard = PersonalVCard();
+
+    ///Set properties
+    vCard.firstName = fullContact.nome;
+    vCard.workPhone = fullContact.telefone;
+    vCard.email = fullContact.email;
+    vCard.url = fullContact.site;
+    //return String vCard for generate QRCode
+    return vCard.getFormattedString();
+  }
+
+  void readContact(ContactModel fullContact) {
+    Get.to(ReadPage(fullContact));
   }
 }

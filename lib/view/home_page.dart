@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:contactlist/controller/contact_controller.dart';
 import 'package:contactlist/model/contact_model.dart';
 import 'package:contactlist/view/add_page.dart';
@@ -133,6 +132,11 @@ bottomMenu(ContactModel contact) {
                 )
               : Container(),
           contact.id != null
+              ? optionMenu(contact.id, FaIcon(FontAwesomeIcons.eye),
+                  'Ver contato', 'read',
+                  fullContact: contact)
+              : Container(),
+          contact.id != null
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.eraser, color: Colors.white),
@@ -155,6 +159,7 @@ optionMenu(
   String action, {
   String foto,
   String whatsMessage,
+  ContactModel fullContact,
 }) {
   final ContactController _contactController = Get.put(ContactController());
   if (action == null) {
@@ -172,7 +177,9 @@ optionMenu(
     ),
     onTap: () => {
       Get.back(),
-      if (action == 'delete')
+      if (action == 'read')
+        {_contactController.readContact(fullContact)}
+      else if (action == 'delete')
         {_contactController.deleteContact(id, foto)}
       else if (action == 'whats')
         {_contactController.shareOnWhatsapp(whatsMessage)}
