@@ -41,25 +41,25 @@ class ReadPage extends StatelessWidget {
           children: [
             fullContact.descricao != ""
                 ? ListTile(
-                    title: Text('Description'),
+                    title: Text('readDescription'.tr),
                     subtitle: Text(fullContact.descricao),
                   )
                 : Container(),
             fullContact.telefone != ""
                 ? ListTile(
-                    title: Text('Phone'),
+                    title: Text('readPhone'.tr),
                     subtitle: Text(fullContact.telefone),
                   )
                 : Container(),
             fullContact.email != ""
                 ? ListTile(
-                    title: Text('E-mail'),
+                    title: Text('readEmail'.tr),
                     subtitle: Text(fullContact.email),
                   )
                 : Container(),
             fullContact.site != ""
                 ? ListTile(
-                    title: Text('Site'),
+                    title: Text('readSite'.tr),
                     subtitle: Text(fullContact.site),
                   )
                 : Container(),

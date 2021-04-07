@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: Text("Contact list"),
+        title: Text('titleList'.tr),
         actions: [
           TextButton(
             child: Icon(
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
               //toda vez que ouver uma mudança nas variáveis observáveis
               //no caso:  var ContactModel = List<ContactModel>().obs;
               child: Obx(() => _contactController.listOfContacts.length < 1
-                  ? Text('Nenhum contato adicionado em sua lista!')
+                  ? Text('emptyList'.tr)
                   : ListView.builder(
                       itemCount: _contactController.listOfContacts.length,
                       itemBuilder: (context, index) => Card(
@@ -109,7 +109,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.phone),
-                  'Call on phone',
+                  'menuCallOnPhone'.tr,
                   'tel:' + contact.telefone,
                 )
               : Container(),
@@ -117,7 +117,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.envelope),
-                  'Write a e-mail',
+                  'menuWriteEmail'.tr,
                   'mailto:' + contact.email,
                 )
               : Container(),
@@ -125,7 +125,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.whatsapp),
-                  'Share on Whastsapp',
+                  'menuShareOnWhatsapp'.tr,
                   'whats',
                   whatsMessage: 'Olá ' + contact.nome,
                 )
@@ -134,7 +134,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.globe),
-                  'Open website',
+                  'menuOpenWebsite'.tr,
                   contact.site,
                 )
               : Container(),
@@ -142,7 +142,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.edit),
-                  'Alterar',
+                  'menuUpdateContact'.tr,
                   'edit',
                   fullContact: contact,
                   index: index,
@@ -152,7 +152,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.eye),
-                  'Ver contato',
+                  'menuReadContact'.tr,
                   'read',
                   fullContact: contact,
                 )
@@ -161,7 +161,7 @@ bottomMenu(ContactModel contact, int index) {
               ? optionMenu(
                   contact.id,
                   FaIcon(FontAwesomeIcons.eraser, color: Colors.white),
-                  'Apagar contato',
+                  'menuDeleteContact'.tr,
                   'delete',
                   foto: contact.foto,
                   index: index,

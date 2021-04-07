@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:contactlist/controller/contact_controller.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +15,7 @@ class FormPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: new AppBar(
-        title: Text(inEdition != null ? "Edit contact" : "Add contact to list"),
+        title: Text(inEdition != null ? 'formTitleEdit'.tr : 'formTitleAdd'.tr),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -42,34 +40,34 @@ class FormPage extends StatelessWidget {
               children: <Widget>[
                 TextFormField(
                   controller: _contactController.nomeContactController,
-                  decoration: InputDecoration(hintText: "Enter your name"),
+                  decoration: InputDecoration(hintText: 'formFieldName'.tr),
                   autofocus: true,
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Required field";
+                      return 'formRequiredField'.tr;
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   controller: _contactController.descricaoContactController,
-                  decoration: InputDecoration(
-                      hintText: "Enter your personal description"),
+                  decoration:
+                      InputDecoration(hintText: 'formFieldDescription'.tr),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Required field";
+                      return 'formRequiredField'.tr;
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   controller: _contactController.emailContactController,
-                  decoration: InputDecoration(hintText: "Enter your e-mail"),
+                  decoration: InputDecoration(hintText: 'formFieldEmail'.tr),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value.isNotEmpty) {
                       return (!GetUtils.isEmail(value))
-                          ? "Email is not valid"
+                          ? 'formFieldEmailInvalid'.tr
                           : null;
                     }
                     return null;
@@ -77,8 +75,7 @@ class FormPage extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: _contactController.siteContactController,
-                  decoration:
-                      InputDecoration(hintText: "Enter your internet link"),
+                  decoration: InputDecoration(hintText: 'formFieldSite'.tr),
                   keyboardType: TextInputType.url,
                   //ao clicar no Enter do teclado, vai para o próximo campo
                   textInputAction: TextInputAction.next,
@@ -86,7 +83,7 @@ class FormPage extends StatelessWidget {
                   validator: (value) {
                     if (value.isNotEmpty) {
                       return (!GetUtils.isURL(value))
-                          ? "Link is not valid"
+                          ? 'formFieldSiteInvalid'.tr
                           : null;
                     }
                     return null;
@@ -94,15 +91,14 @@ class FormPage extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: _contactController.telefoneContactController,
-                  decoration:
-                      InputDecoration(hintText: "Enter your cell phone"),
+                  decoration: InputDecoration(hintText: 'formFieldPhone'.tr),
                   keyboardType: TextInputType.phone,
                   //ao clicar no Enter do teclado, fecha o teclado.
                   textInputAction: TextInputAction.done,
                   validator: (value) {
                     if (value.isNotEmpty) {
                       return (!GetUtils.isPhoneNumber(value))
-                          ? "Phone is not valid"
+                          ? 'formFieldPhoneInvalid'.tr
                           : null;
                     }
                     return null;
@@ -120,7 +116,7 @@ class FormPage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Icon(Icons.image),
-                                  Text('Update a picture')
+                                  Text('fotoUpdateButton'.tr)
                                 ],
                               ),
                             ),
@@ -134,7 +130,7 @@ class FormPage extends StatelessWidget {
                           child: Row(
                             children: [
                               Icon(Icons.image),
-                              Text('Take a picture')
+                              Text('fotoTakeButton'.tr)
                             ],
                           ),
                         ),

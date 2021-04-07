@@ -145,7 +145,10 @@ class ContactController extends GetxController {
   void addContactAction() async {
     if (form.currentState.validate()) {
       if (image.value.isEmpty) {
-        Get.snackbar('Aviso', 'Tire uma foto para seu contato');
+        Get.snackbar(
+          'warningTitlePhotoRequired'.tr,
+          'warningTextPhotoRequired'.tr,
+        );
         return;
       }
 
@@ -185,7 +188,10 @@ class ContactController extends GetxController {
     if (form.currentState.validate()) {
       if (image.value.isEmpty) {
         //valida a imagem, sempre vai ter
-        Get.snackbar('Aviso', 'Tire uma foto para seu contato');
+        Get.snackbar(
+          'warningTitlePhotoRequired'.tr,
+          'warningTextPhotoRequired'.tr,
+        );
         return;
       }
       await DatabaseHelper.instance.update(
@@ -226,10 +232,10 @@ class ContactController extends GetxController {
       radius: 10,
       barrierDismissible:
           false, //somente deixa fechar o pop-pup clicando nos botões de ação
-      textConfirm: "Apagar",
-      textCancel: "Cancelar",
-      title: 'Confirma?',
-      content: Text('Deseja realmente apagar'),
+      textConfirm: 'deleteContactConfirmButton'.tr,
+      textCancel: 'deleteContactCancelButton'.tr,
+      title: 'deleteContactTitle'.tr,
+      content: Text('deleteContactText'.tr),
       onConfirm: () async {
         //adiciona automaticamente o botão OK
         //apaga do banco de dados o registro
@@ -255,8 +261,10 @@ class ContactController extends GetxController {
       image.value = pickedFile
           .path; //se o usuário tirou a foto e confirmou, armazena o caminho da foto na variável imagem
     } else {
-      Get.snackbar('Aviso',
-          'Imagem não selecionada'); //se não confirmou a imagem, exibe um snackbar
+      Get.snackbar(
+        'warningTitlePhotoNotTaken'.tr,
+        'warningTextPhotoNotTaken'.tr,
+      ); //se não confirmou a imagem, exibe um snackbar
     }
   }
 

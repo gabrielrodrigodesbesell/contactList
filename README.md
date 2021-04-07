@@ -33,7 +33,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
             - [x] Exibir todos os dados, foto e QRCode do tipo VCard;
         - [x] Exibir opção de ver no mapa a localização do contato(se disponível);
 - [x] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
-- [ ] Adicionar idiomas(PT e EN) ao app;
+- [x] Adicionar idiomas(PT e EN) ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
 - [ ] Exibir a versão atual do APP na Splash Screen;
 - [ ] Atualizar o ícone do aplicativo;
