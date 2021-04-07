@@ -16,39 +16,53 @@ class ReadPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: new AppBar(title: Text(fullContact.nome)),
+      appBar: new AppBar(
+        title: Text(fullContact.nome),
+        actions: [
+          fullContact.foto !=
+                  "" //se existir um caminho de imagem, exibe a imagem na tela
+              ? Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.red,
+                    child: CircleAvatar(
+                      backgroundImage: Image.file(
+                        File(fullContact.foto),
+                        fit: BoxFit.cover,
+                      ).image,
+                    ),
+                  ),
+                )
+              : Container()
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListTile(
-              title: Text('Description'),
-              subtitle: Text(fullContact.descricao),
-            ),
-            ListTile(
-              title: Text('Phone'),
-              subtitle: Text(fullContact.telefone),
-            ),
-            ListTile(
-              title: Text('E-mail'),
-              subtitle: Text(fullContact.email),
-            ),
-            ListTile(
-              title: Text('Site'),
-              subtitle: Text(fullContact.site),
-            ),
-            ListTile(
-              title: Text('Photo'),
-              subtitle: Column(
-                children: [
-                  fullContact.foto !=
-                          "" //se existir um caminho de imagem, exibe a imagem na tela
-                      ? Image.file(
-                          File(fullContact.foto),
-                        )
-                      : Text('Foto não adicionada')
-                ],
-              ),
-            ),
+            fullContact.descricao != ""
+                ? ListTile(
+                    title: Text('Description'),
+                    subtitle: Text(fullContact.descricao),
+                  )
+                : Container(),
+            fullContact.telefone != ""
+                ? ListTile(
+                    title: Text('Phone'),
+                    subtitle: Text(fullContact.telefone),
+                  )
+                : Container(),
+            fullContact.email != ""
+                ? ListTile(
+                    title: Text('E-mail'),
+                    subtitle: Text(fullContact.email),
+                  )
+                : Container(),
+            fullContact.site != ""
+                ? ListTile(
+                    title: Text('Site'),
+                    subtitle: Text(fullContact.site),
+                  )
+                : Container(),
             ListTile(
               title: Text('VCard'),
               subtitle: Padding(

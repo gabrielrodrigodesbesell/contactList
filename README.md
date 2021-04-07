@@ -1,7 +1,7 @@
 ### Lista de contatos com Flutter em base de dados local
-**Instrutores:**<br />
+**Instrutor:**<br />
 Gabriel Rodrigo Desbesell <br />
-Rafael Chieli<br /><br />
+<br />
 
 Projeto desenvolvido com os alunos do curso de programação para internet do SENAC SC:
 
@@ -21,7 +21,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
     - [x] Remover o botão excluir da Lista;
     - [x] Adicionar menu inferior ao clicar no contato;               
         - [x] Utilizar ícones do FontAwesome;
-        - [ ] Adicionar opção de alteração do contato;
+        - [x] Adicionar opção de alteração do contato;
         - [x] Permitir abrir o link(se cadastrado) do contato no navegador de internet;
         - [x] Abrir compartilhar o contato por WhatsApp;
         - [x] Abrir o telefone no discador;
@@ -33,7 +33,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
             - [x] Exibir todos os dados, foto e QRCode do tipo VCard;
         - [x] Exibir opção de ver no mapa a localização do contato(se disponível);
 - [x] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
-- [ ] Adicionar pelo menos dois idiomas ao app;
+- [ ] Adicionar idiomas(PT e EN) ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
 - [ ] Exibir a versão atual do APP na Splash Screen;
 - [ ] Atualizar o ícone do aplicativo;
@@ -41,6 +41,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
 
 **Corrigir bugs**
 - [x] Ao adicionar um contato e apagar ele na sequência não é removido da base de dados, apenas da tela;
+- [x] Falha ao exibir o item da lista em modo release(quebrando layout da lista);
   
 
 **Pacotes utilizados no projeto:**

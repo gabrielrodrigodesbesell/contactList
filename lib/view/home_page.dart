@@ -46,15 +46,20 @@ class HomePage extends StatelessWidget {
                       itemCount: _contactController.listOfContacts.length,
                       itemBuilder: (context, index) => Card(
                         child: ListTile(
-                          leading: Expanded(
-                              flex: 1,
-                              child: //exibe a imagem, se existir
-                                  _contactController
-                                              .listOfContacts[index].foto !=
-                                          ""
-                                      ? Image.file(File(_contactController
-                                          .listOfContacts[index].foto))
-                                      : Image.asset('assets/contato.png')),
+                          leading: //exibe a imagem, se existir
+                              _contactController.listOfContacts[index].foto !=
+                                      ""
+                                  ? CircleAvatar(
+                                      backgroundColor: Colors.red,
+                                      child: CircleAvatar(
+                                        backgroundImage: Image.file(
+                                          File(_contactController
+                                              .listOfContacts[index].foto),
+                                          fit: BoxFit.cover,
+                                        ).image,
+                                      ),
+                                    )
+                                  : Image.asset('assets/contato.png'),
                           title: Text(
                               _contactController.listOfContacts[index].nome),
                           subtitle: Text(
