@@ -1,25 +1,35 @@
 import 'dart:io';
 
 import 'package:contactlist/controller/contact_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddPage extends StatelessWidget {
+class FormPage extends StatelessWidget {
+  final inEdition;
+  final index;
+  FormPage({this.inEdition, this.index});
   //injeta o controllador ContactController na classe AddPage
   //deixando-o acessível na variável _contactController
   final ContactController _contactController = Get.put(ContactController());
   @override
   Widget build(BuildContext context) {
-    //limpa a variável imagem, caso o usuário tenha tirado uma foto e voltado para a lista sem salvar, ao retornar na tela de cadastro a imagem deve ser vazia
-    _contactController.image.value = '';
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: new AppBar(title: Text("Add contact to list")),
+      appBar: new AppBar(
+        title: Text(inEdition != null ? "Edit contact" : "Add contact to list"),
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            //acessa o controlador ContactController e executa a função
-            //addData()
-            _contactController.addData();
+            if (inEdition != null) {
+              //acessa o controlador ContactController e executa a função
+              //updateData(id)
+              _contactController.editContactAction(inEdition, index);
+            } else {
+              //acessa o controlador ContactController e executa a função
+              //addData()
+              _contactController.addContactAction();
+            }
           },
           child: Icon(Icons.save)),
       body: SingleChildScrollView(
@@ -100,12 +110,13 @@ class AddPage extends StatelessWidget {
                 ),
                 Obx(
                   //cria o observável do Getx para exibir a imagem tirada na câmera na tela.(atualiza automaticamente baseado nas variáveis .obs)
-                  () => _contactController.image.value !=
-                          "" //se existir um caminho de imagem, exibe a imagem na tela
+                  () => _contactController.image.value.isImageFileName
+                      //se existir um caminho de imagem, exibe a imagem na tela
                       ? Column(
                           children: [
                             TextButton(
-                              onPressed: () => _contactController.getImage(),
+                              onPressed: () =>
+                                  _contactController.getImageAction(),
                               child: Row(
                                 children: [
                                   Icon(Icons.image),
@@ -119,7 +130,7 @@ class AddPage extends StatelessWidget {
                         )
                       : TextButton(
                           //aciona a função de abertura da câmera
-                          onPressed: () => _contactController.getImage(),
+                          onPressed: () => _contactController.getImageAction(),
                           child: Row(
                             children: [
                               Icon(Icons.image),

@@ -4,7 +4,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "contacts.db";
-  static final _databaseVersion = 3;
+  static final _databaseVersion = 6;
 
   static final table = "contacts";
 
@@ -78,5 +78,17 @@ class DatabaseHelper {
   Future<int> delete(int id) async {
     Database db = await instance.database;
     return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  //atualiza um registro na tabela
+  Future<int> update(int id, ContactModel contact) async {
+    //aguarda a instância do banco ser acessível.
+    Database db = await instance.database;
+    return await db.update(
+      table,
+      contact.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [id],
+    );
   }
 }

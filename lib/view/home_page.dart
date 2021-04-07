@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:contactlist/controller/contact_controller.dart';
 import 'package:contactlist/model/contact_model.dart';
-import 'package:contactlist/view/add_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,14 +20,14 @@ class HomePage extends StatelessWidget {
               Icons.qr_code,
               color: Colors.white,
             ),
-            onPressed: () => _contactController.scan(),
+            onPressed: () => _contactController.scanQRCodeAction(),
           )
         ],
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             //abre a página do formulário
-            Get.to(AddPage());
+            _contactController.addContactForm();
           },
           child: Icon(Icons.add)),
       body: Padding(
@@ -41,30 +40,33 @@ class HomePage extends StatelessWidget {
               //Obx() é o responsável por atualizar o listView
               //toda vez que ouver uma mudança nas variáveis observáveis
               //no caso:  var ContactModel = List<ContactModel>().obs;
-              child: Obx(() => _contactController.contactModel.length < 1
+              child: Obx(() => _contactController.listOfContacts.length < 1
                   ? Text('Nenhum contato adicionado em sua lista!')
                   : ListView.builder(
-                      itemCount: _contactController.contactModel.length,
+                      itemCount: _contactController.listOfContacts.length,
                       itemBuilder: (context, index) => Card(
                         child: ListTile(
                           leading: Expanded(
                               flex: 1,
                               child: //exibe a imagem, se existir
-                                  _contactController.contactModel[index].foto !=
+                                  _contactController
+                                              .listOfContacts[index].foto !=
                                           ""
                                       ? Image.file(File(_contactController
-                                          .contactModel[index].foto))
+                                          .listOfContacts[index].foto))
                                       : Image.asset('assets/contato.png')),
-                          title:
-                              Text(_contactController.contactModel[index].nome),
+                          title: Text(
+                              _contactController.listOfContacts[index].nome),
                           subtitle: Text(
-                            _contactController.contactModel[index].descricao,
+                            _contactController.listOfContacts[index].descricao,
                           ),
                           trailing: IconButton(
-                              icon: FaIcon(FontAwesomeIcons.addressBook),
-                              onPressed: () => (bottomMenu(_contactController
-                                      .contactModel[
-                                  index]))), //passando os dois parâmetros para a função de exclusão
+                            icon: FaIcon(FontAwesomeIcons.addressBook),
+                            onPressed: () => (bottomMenu(
+                              _contactController.listOfContacts[index],
+                              index,
+                            )),
+                          ), //passando os dois parâmetros para a função de exclusão
                         ),
                       ),
                     )),
@@ -76,7 +78,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-bottomMenu(ContactModel contact) {
+bottomMenu(ContactModel contact, int index) {
   Get.bottomSheet(
     SingleChildScrollView(
       child: Column(
@@ -132,9 +134,23 @@ bottomMenu(ContactModel contact) {
                 )
               : Container(),
           contact.id != null
-              ? optionMenu(contact.id, FaIcon(FontAwesomeIcons.eye),
-                  'Ver contato', 'read',
-                  fullContact: contact)
+              ? optionMenu(
+                  contact.id,
+                  FaIcon(FontAwesomeIcons.edit),
+                  'Alterar',
+                  'edit',
+                  fullContact: contact,
+                  index: index,
+                )
+              : Container(),
+          contact.id != null
+              ? optionMenu(
+                  contact.id,
+                  FaIcon(FontAwesomeIcons.eye),
+                  'Ver contato',
+                  'read',
+                  fullContact: contact,
+                )
               : Container(),
           contact.id != null
               ? optionMenu(
@@ -143,6 +159,7 @@ bottomMenu(ContactModel contact) {
                   'Apagar contato',
                   'delete',
                   foto: contact.foto,
+                  index: index,
                 )
               : Container(),
         ],
@@ -152,15 +169,8 @@ bottomMenu(ContactModel contact) {
   );
 }
 
-optionMenu(
-  int id,
-  Widget icon,
-  String title,
-  String action, {
-  String foto,
-  String whatsMessage,
-  ContactModel fullContact,
-}) {
+optionMenu(int id, Widget icon, String title, String action,
+    {String foto, String whatsMessage, ContactModel fullContact, int index}) {
   final ContactController _contactController = Get.put(ContactController());
   if (action == null) {
     return;
@@ -177,10 +187,12 @@ optionMenu(
     ),
     onTap: () => {
       Get.back(),
-      if (action == 'read')
-        {_contactController.readContact(fullContact)}
+      if (action == 'edit')
+        {_contactController.editContactForm(fullContact, index)}
+      else if (action == 'read')
+        {_contactController.readContactPage(fullContact)}
       else if (action == 'delete')
-        {_contactController.deleteContact(id, foto)}
+        {_contactController.deleteContactAction(id, foto, index)}
       else if (action == 'whats')
         {_contactController.shareOnWhatsapp(whatsMessage)}
       else if (action != null)
