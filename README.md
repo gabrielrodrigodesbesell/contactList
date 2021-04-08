@@ -36,7 +36,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
 - [x] Adicionar idiomas(PT e EN) ao app;
 - [ ] Adicionar Splash Screen personalizado ao app;
 - [ ] Exibir a versão atual do APP na Splash Screen;
-- [ ] Atualizar o ícone do aplicativo;
+- [x] Atualizar o ícone do aplicativo(https://www.digitalocean.com/community/tutorials/flutter-app-icons);
 - [x] Modificar o título do aplicativo;
 
 **Corrigir bugs**
