@@ -1,4 +1,4 @@
-import 'package:contactlist/view/home_page.dart';
+import 'package:contactlist/view/splash_page.dart';
 import 'package:contactlist/utils/Messages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: HomePage(),
+      home: SplashPage(),
       translations: Messages(), // classe com as traduções
       locale: Get.deviceLocale, // define a tradução baseado na localização
       fallbackLocale: Locale('pt_BR', 'en_US'),

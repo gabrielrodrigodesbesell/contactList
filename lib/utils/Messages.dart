@@ -4,6 +4,7 @@ class Messages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'welcome': 'Contact List',
           'titleList': 'Contact list',
           'emptyList': 'No contacts added to your list!',
           'menuCallOnPhone': 'Call on phone',
@@ -40,6 +41,7 @@ class Messages extends Translations {
           'warningTextPhotoNotTaken': 'Image not taken',
         },
         'pt_BR': {
+          'welcome': 'Lista de Contatos',
           'titleList': 'Lista de contatos',
           'emptyList': 'Nenhum contato adicionado a sua lista!',
           'menuCallOnPhone': 'Discar no telefone',
