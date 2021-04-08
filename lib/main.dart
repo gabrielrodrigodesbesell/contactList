@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: SplashPage(),
+      home: SplashPage(), //direciona sempre para a tela de Splash
       translations: Messages(), // classe com as traduções
       locale: Get.deviceLocale, // define a tradução baseado na localização
       fallbackLocale: Locale('pt_BR', 'en_US'),

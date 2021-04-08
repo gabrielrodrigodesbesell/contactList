@@ -35,7 +35,7 @@ Projeto desenvolvido com os alunos do curso de programação para internet do SE
 - [x] Adicionar opção no AppBar de leitura de QRCode do tipo VCard e importação do contato para a base de dados;
 - [x] Adicionar idiomas(PT e EN) ao app;
 - [x] Adicionar Splash Screen personalizado ao app;
-- [ ] Exibir a versão atual do APP na Splash Screen;
+- [x] Exibir a versão atual do APP na Splash Screen;
 - [x] Atualizar o ícone do aplicativo(https://www.digitalocean.com/community/tutorials/flutter-app-icons);
 - [x] Modificar o título do aplicativo;
 
@@ -61,7 +61,7 @@ https://pub.dev/packages/validators/versions
 https://pub.dev/packages/intl
 https://pub.dev/packages/qr_flutter
 https://pub.dev/packages/vcard
-
+https://pub.dev/packages/splashscreen
 
 **Créditos ao projeto original:**
 https://github.com/aadarshchhetry/sqlTodoApp
